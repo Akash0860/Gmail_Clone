@@ -1,9 +1,9 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { useState } from "react";
-
-
-
+import { useState ,Suspense } from "react";
+import { Outlet } from "react-router-dom";
+import SuspenseLoader from "../components/common/SuspenseLoader";
+import { Box } from "@mui/material";
 const Main = ()=>{
     const [openDrawer,setOpenDrawer]=useState(true);
 
@@ -11,11 +11,15 @@ const Main = ()=>{
         setOpenDrawer(prevState => !prevState)
     }
     return(
-        <div>
+        <>
             <Header toggleDrawer={toggleDrawer}setOpenDrawer={setOpenDrawer}/>
-            <Sidebar openDrawer={openDrawer}/>
-            <div>MAIN</div>
-        </div>
+            <Box>
+                <Sidebar openDrawer={openDrawer}/>
+                <Suspense fallback={<SuspenseLoader />}>
+                    <Outlet context={{openDrawer}}/>
+                </Suspense>
+            </Box> 
+        </>
     )
 }
 

@@ -41,7 +41,7 @@ const Header = ({toggleDrawer}) =>{
                 <img src={gmailLogo} alt="gmailLogo" style={{width:110,marginLeft:15}}/>
                 <SearchWrapper>
                     <Search color='action'/>
-                    <InputBase placeholder='Search Mail'/>
+                    <InputBase placeholder='Search Mail' id='searchMail'/>
                     <Tune color='action'/>
                 </SearchWrapper>
                 <OptionWrapper>
